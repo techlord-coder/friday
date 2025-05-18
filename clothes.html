@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modern boutique with stylish clothes, shoes, and accessories">
+  <title>Fashion Boutique</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+    }header {
+  background: #1f1f1f;
+  color: white;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.search-container, .category-filter {
+  text-align: center;
+  margin: 20px auto;
+}
+
+#searchInput {
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+}
+
+.filter-btn {
+  background-color: #1f1f1f;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-btn:hover {
+  background-color: #555;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.product {
+  background: white;
+  width: 250px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+  height: 70%;
+}
+
+.product h3 {
+  margin: 10px 0 5px;
+}
+
+.product p {
+  font-size: 14px;
+  color: #555;
+  margin: 0 10px 10px;
+}
+
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  margin: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  #searchInput {
+    width: 90%;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fashion Boutique</h1>
+    <p>Explore the latest styles and trends</p>
+  </header>  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for items like 'suit', 'dress', 'sneakers'...">
+  </div>  <div class="category-filter">
+    <button class="filter-btn" onclick="filterCategory('all')">All</button>
+    <button class="filter-btn" onclick="filterCategory('men')">Men</button>
+    <button class="filter-btn" onclick="filterCategory('women')">Women</button>
+    <button class="filter-btn" onclick="filterCategory('shoes')">Shoes</button>
+    <button class="filter-btn" onclick="filterCategory('accessories')">Accessories</button>
+  </div>  <div class="products" id="productContainer"></div>  <script>
+    // Sample product data
+const productData = [
+  { title: "Black Suit", desc: "Formal black men's suit.", img: "blac.jpg", cat: "men" },
+  { title: "White Dress", desc: "Elegant white cocktail dress.", img: "white.webp", cat: "women" },
+  { title: "White Sneakers", desc: "Casual white sneakers.", img: "sneakers.jpg", cat: "shoes" },
+  { title: "Black Loafers", desc: "Formal leather shoes.", img: "loafers.jpg", cat: "shoes" },
+  { title: "Leather Bag", desc: "Spacious brown leather handbag.", img: "leather.jpg", cat: "accessories" },
+  
+];
+// ...existing code...
+// ...existing code...
+
+    // Fill each category with more descriptive real-sounding products
+    const clothingKeywords = {
+      men: [ 'Shirt', 'Jacket', 'Jeans', 'Blazer'],
+      women: [ 'Top', 'Skirt', 'Blouse', 'Gown'],
+      shoes: [ 'Heels', 'Boots', 'Sandals', 'Loafers'],
+      accessories: [ 'Watch', 'Earrings', 'Necklace', 'Scarf']
+    };
+
+   // ...existing code...
+
+// ...existing code...
+// ...existing code...
+Object.entries(clothingKeywords).forEach(([cat, types]) => {
+  for (let i = 1; i <= 4; i++) {
+   
+    const type = types[i % types.length];
+     switch(type){
+     
+    case 'Shirt':
+      productData.push({
+        title: `${type} `,
+        desc: `Stylish ${type.toLowerCase()} for all occasions.`,
+        img: "shirt.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Jacket':
+      productData.push({
+        title: `${type} `,
+        desc: `Trendy ${type.toLowerCase()} for the season.`,
+        img: "adidas.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Jeans':
+      productData.push({
+        title: `${type} `,
+        desc: `Comfortable ${type.toLowerCase()} for everyday wear.`,
+        img: "jeans.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Blazer':
+      productData.push({
+        title: `${type} `,
+        desc: `Elegant ${type.toLowerCase()} for formal events.`,
+        img: "blazer1.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+   
+    case 'Top':
+      productData.push({
+        title: `${type} `,
+        desc: `Fashionable ${type.toLowerCase()} for casual outings.`,
+        img: "top.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Skirt':
+      productData.push({
+        title: `${type} `,
+        desc: `Stylish ${type.toLowerCase()} for summer.`,
+        img: "skirt.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Blouse':
+      productData.push({
+        title: `${type} `,
+        desc: `Elegant ${type.toLowerCase()} for formal occasions.`,
+        img: "blouse.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Gown':
+      productData.push({
+        title: `${type} `,
+        desc: `Stunning ${type.toLowerCase()} for evening events.`,
+        img: "gown.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    
+    case 'Heels':
+      productData.push({
+        title: `${type} `,
+        desc: `Elegant ${type.toLowerCase()} for parties.`,
+        img: "heels.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Boots':
+      productData.push({
+        title: `${type} `,
+        desc: `Stylish ${type.toLowerCase()} for winter.`,
+        img: "boots.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Sandals':
+      productData.push({
+        title: `${type} `,
+        desc: `Casual ${type.toLowerCase()} for summer.`,
+        img: "sandals.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Loafers':
+      productData.push({
+        title: `${type} `,
+        desc: `Comfortable ${type.toLowerCase()} for formal wear.`,
+        img: "loafer.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    
+      case 'Watch':
+      productData.push({
+        title: `${type} `,
+        desc: `Elegant ${type.toLowerCase()} for all occasions.`,
+        img: "watch.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Earrings':
+      productData.push({
+        title: `${type} `,
+        desc: `Trendy ${type.toLowerCase()} for every outfit.`,
+        img: "earrings.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Necklace':
+      productData.push({
+        title: `${type} `,
+        desc: `Beautiful ${type.toLowerCase()} for special occasions.`,
+        img: "necklace.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    case 'Scarf':
+      productData.push({
+        title: `${type} `,
+        desc: `Stylish ${type.toLowerCase()} for winter.`,
+        img: "scarf.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+    default:
+      productData.push({
+        title: `${type} `,
+        desc: `Stylish ${type.toLowerCase()} for all occasions.`,
+        img: "blazer2.jpg", // Use any real image URL here
+        cat
+      });
+      break;
+     }
+   
+  }
+});
+// ...existing code...
+// ...existing code...
+
+// ...existing code...
+
+    const container = document.getElementById("productContainer");
+    container.innerHTML = productData.map(p => `
+      <div class="product ${p.cat}">
+        <img src="${p.img}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/250?text=Image+Unavailable'">
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <a href="https://wa.me/254712345678" class="whatsapp-btn">Order on WhatsApp</a>
+      </div>
+    `).join('');
+
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+      const filter = this.value.toLowerCase();
+      document.querySelectorAll('.product').forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.product');
+      items.forEach(item => {
+        item.style.display = (category === 'all' || item.classList.contains(category)) ? '' : 'none';
+      });
+    }
+  </script></body>
+</html>
